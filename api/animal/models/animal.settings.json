@@ -1,0 +1,71 @@
+{
+  "kind": "collectionType",
+  "collectionName": "animals",
+  "info": {
+    "name": "Animal"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "color": {
+      "type": "string"
+    },
+    "last_seen": {
+      "type": "date"
+    },
+    "description": {
+      "type": "text"
+    },
+    "size": {
+      "type": "enumeration",
+      "enum": [
+        "small",
+        "medium",
+        "big"
+      ],
+      "required": false,
+      "unique": false
+    },
+    "location": {
+      "type": "string"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "dog",
+        "cat"
+      ]
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "lost",
+        "found",
+        "forAdoption",
+        "adopted"
+      ],
+      "required": true
+    },
+    "age": {
+      "type": "float"
+    },
+    "user": {
+      "via": "animals",
+      "plugin": "users-permissions",
+      "model": "user"
+    },
+    "image": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "files",
+        "images",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    }
+  }
+}
